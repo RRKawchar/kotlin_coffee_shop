@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">kotlin_coffee_shop_app</string>
+    <string name="choice_your_n_favorite_coffee">Choice Your\n Favorite Coffee</string>
+    <string name="get_started">Get Started</string>
+    <string name="search_anything">Search Anything....</string>
+    <string name="popular_coffees">Popular Coffees</string>
+    <string name="explore">Explore</string>
+    <string name="cart">Cart</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="my_order">My Order</string>
+    <string name="profile">Profile</string>
+</resources>
