@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         initPopular()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun initPopular() {
       binding.popularProgressBar.visibility=View.VISIBLE
         viewModel.loadPopular().observeForever{

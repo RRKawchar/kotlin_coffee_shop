@@ -2,11 +2,14 @@ package com.example.kotlin_coffee_shop_app.Adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlin_coffee_shop_app.Activity.ItemListActivity
 import com.example.kotlin_coffee_shop_app.R
 import com.example.kotlin_coffee_shop_app.databinding.ViewholderCategoryBinding
 import com.example.kotlin_coffee_shop_app.domain.CategoryModel
@@ -28,7 +31,7 @@ RecyclerView.Adapter<CategoryAdapter.Viewholder>(){
         return Viewholder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryAdapter.Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: CategoryAdapter.Viewholder, @SuppressLint("RecyclerView") position: Int) {
        val item=items[position]
         holder.binding.titleCat.text=item.title
 
@@ -39,7 +42,11 @@ RecyclerView.Adapter<CategoryAdapter.Viewholder>(){
             notifyItemChanged(selectedPosition)
 
             Handler(Looper.getMainLooper()).postDelayed({
-
+             val intent=Intent(context,ItemListActivity::class.java).apply {
+                 putExtra("id",item.id.toString())
+                 putExtra("title",item.title.toString())
+             }
+                ContextCompat.startActivity(context,intent,null)
             },500)
         }
         if(selectedPosition==position){
