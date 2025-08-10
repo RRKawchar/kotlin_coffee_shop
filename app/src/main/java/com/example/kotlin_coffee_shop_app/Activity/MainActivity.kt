@@ -1,25 +1,39 @@
 package com.example.kotlin_coffee_shop_app.Activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.kotlin_coffee_shop_app.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_coffee_shop_app.databinding.ActivityMainBinding
-import com.example.kotlin_coffee_shop_app.viewModel.MainViewModel
 import com.bumptech.glide.Glide;
+import com.example.kotlin_coffee_shop_app.Adapter.CategoryAdapter
+import com.example.kotlin_coffee_shop_app.ViewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
-    private val viewModel=MainViewModel()
+   private val viewModel= MainViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBanner()
+        initCategory()
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun initCategory() {
+      binding.categoryProgressBar.visibility=View.VISIBLE
+        viewModel.loadCategory().observeForever{
+            binding.categoryView.layoutManager=LinearLayoutManager(
+                this@MainActivity,LinearLayoutManager.HORIZONTAL,false
+            )
+            binding.categoryView.adapter=CategoryAdapter(it)
+            binding.categoryProgressBar.visibility=View.GONE
+        }
+        viewModel.loadCategory()
     }
 
     private fun initBanner() {
