@@ -1,6 +1,7 @@
 package com.example.kotlin_coffee_shop_app.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -24,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         initBanner()
         initCategory()
         initPopular()
+        initBottomMenu()
+    }
+
+    private fun initBottomMenu() {
+        binding.cartBtn.setOnClickListener{
+            startActivity(Intent(this,CartActivity::class.java))
+        }
     }
 
     @SuppressLint("SuspiciousIndentation")

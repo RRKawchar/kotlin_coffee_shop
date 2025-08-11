@@ -24,7 +24,31 @@ class DetailActivity : AppCompatActivity() {
         managementCart= ManagmentCart(this)
 
         bundle()
+        initSizeList()
 
+    }
+
+    private fun initSizeList() {
+        binding.apply {
+            smallBtn.setOnClickListener {
+                smallBtn.setBackgroundResource(R.drawable.brown_stork_bg)
+                mediumBtn.setBackgroundResource(0)
+                largeBtn.setBackgroundResource(0)
+            }
+
+            mediumBtn.setOnClickListener {
+                smallBtn.setBackgroundResource(0)
+                mediumBtn.setBackgroundResource(R.drawable.brown_stork_bg)
+                largeBtn.setBackgroundResource(0)
+            }
+
+
+            largeBtn.setOnClickListener {
+                smallBtn.setBackgroundResource(0)
+                mediumBtn.setBackgroundResource(0)
+                largeBtn.setBackgroundResource(R.drawable.brown_stork_bg)
+            }
+        }
     }
 
     private fun bundle() {
